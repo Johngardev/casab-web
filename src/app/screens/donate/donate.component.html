@@ -1,0 +1,82 @@
+<section class="bg-gray-50 dark:bg-gray-900 py-16">
+  <div class="container mx-auto px-4 text-center max-w-4xl">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight mb-4">
+      Apoya Nuestro Sueño Ambiental
+    </h1>
+    <p class="text-xl text-gray-600 dark:text-gray-300 font-light mb-12">
+      Tu donación nos ayuda a hacer realidad la pequeña reserva natural de especies nativas.
+    </p>
+
+    <div class="bg-white dark:bg-gray-800 p-8 md:p-12 rounded-lg shadow-xl border border-gray-200 dark:border-gray-700 text-left">
+      <h2 class="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-6">¿A dónde irá tu contribución?</h2>
+      <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+        Cada donación es un paso hacia un futuro más sostenible. Los fondos recaudados se destinarán directamente a la compra de árboles nativos, el mantenimiento de la reserva y la creación de un espacio de investigación y educación ambiental. Tu apoyo es fundamental para que la cultura y la naturaleza coexistan en armonía en Casa B.
+      </p>
+
+      <div class="mb-8">
+        <img class="w-full h-auto rounded-lg shadow-md" src="https://images.unsplash.com/photo-1547467618-971032174c83?q=80&w=1770&auto=format&fit=crop" alt="Persona plantando un árbol">
+      </div>
+
+      <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4">Elige tu aporte</h3>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <button
+          class="font-bold py-3 px-6 rounded-full transition-colors duration-200 focus:outline-none border
+                 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700
+                 hover:bg-violet-100 dark:hover:bg-gray-700"
+          [ngClass]="{ 'bg-violet-600 text-white border-violet-600 hover:bg-violet-600': donationAmount === 10 }"
+          (click)="setAmount(10)"
+          aria-label="Donar diez dólares">
+          $10
+        </button>
+        <button
+          class="font-bold py-3 px-6 rounded-full transition-colors duration-200 focus:outline-none border
+                 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700
+                 hover:bg-violet-100 dark:hover:bg-gray-700"
+          [ngClass]="{ 'bg-violet-600 text-white border-violet-600 hover:bg-violet-600': donationAmount === 25 }"
+          (click)="setAmount(25)"
+          aria-label="Donar veinticinco dólares">
+          $25
+        </button>
+        <button
+          class="font-bold py-3 px-6 rounded-full transition-colors duration-200 focus:outline-none border
+                 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700
+                 hover:bg-violet-100 dark:hover:bg-gray-700"
+          [ngClass]="{ 'bg-violet-600 text-white border-violet-600 hover:bg-violet-600': donationAmount === 50 }"
+          (click)="setAmount(50)"
+          aria-label="Donar cincuenta dólares">
+          $50
+        </button>
+        <button
+          class="font-bold py-3 px-6 rounded-full transition-colors duration-200 focus:outline-none border
+                 text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-900 border-gray-300 dark:border-gray-700
+                 hover:bg-violet-100 dark:hover:bg-gray-700"
+          [ngClass]="{ 'bg-violet-600 text-white border-violet-600 hover:bg-violet-600': donationAmount === 100 }"
+          (click)="setAmount(100)"
+          aria-label="Donar cien dólares">
+          $100
+        </button>
+      </div>
+
+      <div class="mb-6">
+        <label for="custom-amount" class="block text-gray-700 dark:text-gray-300 font-bold mb-2">O ingresa un monto personalizado:</label>
+        <input
+          type="number"
+          id="custom-amount"
+          [(ngModel)]="donationAmount"
+          min="1"
+          step="1"
+          class="w-full text-center px-4 py-3 rounded-lg border-2 border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 focus:border-violet-600 focus:outline-none transition-colors duration-200"
+          aria-describedby="custom-amount-help">
+        <small id="custom-amount-help" class="block mt-1 text-gray-500 dark:text-gray-400">Monto mínimo: 1</small>
+      </div>
+
+      <button
+        class="w-full bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 text-white text-xl font-bold py-4 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+        (click)="processDonation()">
+        Donar ${{ donationAmount || '0.00' }}
+      </button>
+
+    </div>
+  </div>
+</section>

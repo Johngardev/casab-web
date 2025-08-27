@@ -1,0 +1,27 @@
+
+<div class="bg-stone-200 dark:bg-gray-600 border border-violet-800 dark:border-violet-600 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105">
+  <img class="w-full h-96 object-cover" [src]="eventData.imageUrl" alt="Imagen del evento">
+  
+  <div class="p-6">
+    <h3 class="font-bold text-xl mb-2 text-gray-900 dark:text-gray-100">{{ eventData.title }}</h3>
+
+    <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm mb-4">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-4 8h.01M12 21a9 9 0 100-18 9 9 0 000 18z"></path>
+      </svg>
+      <span>{{ eventData.date }}</span>
+    </div>
+    
+    <div class="flex items-center text-gray-600 dark:text-gray-300 text-sm mb-4">
+      <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+      </svg>
+      <span>{{ eventData.location }}</span>
+    </div>
+
+    <button (click)="showEventDetails()" class="block w-md text-center bg-stone-600 hover:bg-stone-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600 py-2 px-4 rounded-lg transition-colors duration-300">
+      Ver Detalles
+    </button>
+  </div>
+</div> 

@@ -1,0 +1,82 @@
+<section class="py-12 bg-gray-50 dark:bg-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="text-center max-w-4xl mx-auto">
+      <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 leading-tight mb-6">
+        Bienvenido a CASA B
+      </h1>
+      <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 mb-8 font-light leading-relaxed">
+        CASA B es más que un espacio; es el corazón de una revolución cultural en la ciudad. Concebido como un refugio para la **música techno y electrónica**, este proyecto ha evolucionado para convertirse en un vibrante epicentro cultural que celebra todas las formas de expresión.
+      </p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left mb-8">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Nuestra Misión</h2>
+          <p class="text-base text-gray-600 dark:text-gray-300">
+            Nuestra misión es clara: transformar un espacio en un catalizador de cambio, promoviendo una cultura de inclusión, diversidad y respeto por nuestro entorno. Creemos en el poder del arte para conectar personas, crear comunidad y generar impacto.
+          </p>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Proyectos Culturales</h2>
+          <ul class="text-base text-gray-600 dark:text-gray-300 space-y-2 list-none p-0">
+            <li><strong>Gastronomía:</strong> Disfruta de experiencias culinarias únicas con chefs locales.</li>
+            <li><strong>Arte:</strong> Explora exhibiciones de artistas emergentes y consagrados.</li>
+            <li><strong>Cine:</strong> Proyecciones y festivales de cine que inspiran y provocan reflexión.</li>
+            <li><strong>Charlas y Talleres:</strong> Aprende y crece a través de la interacción con expertos en diversas áreas.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-lg mb-8">
+        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-2">Nuestra Gran Ambicion</h2>
+        <p class="text-base text-gray-600 dark:text-gray-300">
+          Además de nuestra programación cultural, albergamos un sueño más grande: la creación de una **pequeña reserva natural** con especies de árboles nativos. Este proyecto es un reflejo de nuestro compromiso con la **sostenibilidad** y la **preservación del ecosistema**, demostrando que la cultura y la naturaleza pueden coexistir en armonía.
+        </p>
+      </div>
+
+      <p class="text-lg text-gray-800 dark:text-gray-200 font-medium leading-relaxed mb-8">
+        Con cada evento, fortalecemos el tejido cultural de nuestra ciudad. Casa B es un espacio para todos, donde las ideas florecen, las colaboraciones nacen y la comunidad se une en torno a la pasión por la cultura y la vida.
+        <br><br>
+        <span class="font-bold">¡Te invitamos a ser parte de esta historia en la búsqueda del equilibrio con nuestro planeta!</span>
+      </p>
+
+      <a routerLink="/events" class="inline-block bg-stone-600 hover:bg-stone-700 text-white dark:bg-blue-500 dark:hover:bg-blue-600 text-lg px-8 py-3 rounded-md transition-colors duration-300">
+        Explorar Eventos
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-gray-50 dark:bg-gray-800">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-900 dark:text-gray-100">Próximos Eventos</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      @for (event of eventosProximos; track event.id) {
+        <app-event-card [eventData]="event"></app-event-card>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-stone-200 dark:bg-gray-700">
+  <div class="container mx-auto px-4 text-center max-w-4xl">
+    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-8">Lo que dicen de nosotros</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      @for (testimonio of testimonios; track $index) {
+        <div class="bg-violet-800 dark:bg-violet-800 border border-gray-200 dark:border-gray-700 p-6 rounded-lg shadow-md">
+          <p class="text-gray-200 dark:text-stone-100 italic mb-4">"{{ testimonio.text }}"</p>
+          <p class="font-bold text-gray-200 dark:text-gray-100">{{ testimonio.author }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+<section class="py-12 bg-lime-600 dark:bg-lime-600 text-white">
+  <div class="container mx-auto px-4 text-center max-w-4xl">
+    <h2 class="text-3xl font-bold mb-4">Apoya Nuestro Sueño</h2>
+    <p class="text-lg mb-6 text-gray-100 dark:text-gray-200">Tu contribución nos permite continuar expandiendo nuestra labor cultural y hacer realidad el proyecto de nuestra reserva natural. Cada donación es un paso hacia un futuro más sostenible y lleno de arte.</p>
+    <a routerLink="/donate" class="inline-block bg-green-900 hover:bg-green-700 text-white dark:bg-green-500 dark:hover:bg-green-600 text-lg px-8 py-3 rounded-md transition-colors duration-300 font-bold">
+      ¡Quiero Donar!
+    </a>
+  </div>
+</section>
