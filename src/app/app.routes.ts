@@ -21,12 +21,25 @@ export const routes: Routes = [
       {
         path: 'donate',
         loadComponent: () => import('./screens/donate/donate.component').then(c => c.DonateComponent)
-      }
+      },
+      {
+        path: 'contact',
+        loadComponent: () => import('./screens/contact/contact.component').then(c => c.ContactComponent)
+      },
+      {
+        path: 'gallery',
+        loadComponent: () => import('./screens/gallery/gallery.component').then(c => c.GalleryComponent)
+      },
+      {
+        path: 'radio',
+        loadComponent: () => import('./screens/radio/radio.component').then(c => c.RadioComponent)
+      },
     ]
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
   },
   
 ];
