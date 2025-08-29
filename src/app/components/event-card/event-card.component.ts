@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, Input } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { RouterLink } from '@angular/router';
 import { ShowEventDetailsComponent } from './show-event-details/show-event-details.component';
 
@@ -8,7 +8,7 @@ import { ShowEventDetailsComponent } from './show-event-details/show-event-detai
 @Component({
   selector: 'app-event-card',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MatDialogModule],
   templateUrl: './event-card.component.html',
   styleUrl: './event-card.component.css'
 })
@@ -22,8 +22,8 @@ export class EventCardComponent {
 
   showEventDetails(){
     this.dialog.open(ShowEventDetailsComponent, {
-      width: '400px',
-      height: '400px',
+      width: '600px',
+      height: '600px',
       data: { event: this.eventData }
     });
   }
