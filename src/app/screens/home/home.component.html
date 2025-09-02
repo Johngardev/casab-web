@@ -31,27 +31,26 @@
   </div>
 </section>
 
-<section class="bg-gray-50 dark:bg-gray-800">
-  <div class="container mx-auto px-6">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+<section class="bg-gray-200 dark:bg-gray-600">
+  <div class="container mx-auto px-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-8 items-center">
 
-      <div class="text-center lg:text-left font-space-grotesk">
-        <p class="font-extrabold text-9xl md:text-8xl leading-none text-casabgreen">
+      <div class="text-center lg:text-left py-12 font-space-grotesk">
+        <p class="font-extrabold text-[10rem] md:text-[8rem] leading-none text-casabgreen">
           PRÓXI<br>MOS<br>EVEN<br>TOS
         </p>
       </div>
 
-      <div class="flex items-center justify-center space-x-8 lg:justify-start">
+      <div class="flex space-x-8 py-12">
         @for (evento of eventosProximos; track $index) {
           <app-event-card [eventData]="evento"></app-event-card>
         }
       </div>
-
-      <div>
-        <button>
-
-        </button>
-      </div>
+    </div>
+    <div class="flex justify-center py-8">
+      <button routerLink="/gallery" class="bg-casabgreen hover:opacity-90 text-stone-800 font-bold text-lg px-8 py-4 transition-opacity duration-300 shadow-lg font-space-grotesk">
+        Memorias
+      </button>
     </div>
   </div>
 </section>
@@ -67,15 +66,5 @@
         </div>
       }
     </div>
-  </div>
-</section>
-
-<section class="py-12 bg-lime-600 dark:bg-lime-600 text-white">
-  <div class="container mx-auto px-4 text-center max-w-4xl">
-    <h2 class="text-3xl font-bold mb-4 space-grotesk">Apoya Nuestro Sueño</h2>
-    <p class="text-lg mb-6 text-gray-100 dark:text-gray-200">Tu contribución nos permite continuar expandiendo nuestra labor cultural y hacer realidad el proyecto de nuestra reserva natural. Cada donación es un paso hacia un futuro más sostenible y lleno de arte.</p>
-    <a routerLink="/donate" class="inline-block bg-green-900 hover:bg-green-700 text-white dark:bg-green-500 dark:hover:bg-green-600 text-lg px-8 py-3 rounded-md transition-colors duration-300 font-bold">
-      ¡Quiero Donar!
-    </a>
   </div>
 </section>

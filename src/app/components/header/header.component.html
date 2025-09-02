@@ -1,11 +1,11 @@
 <header class="bg-white/90 dark:bg-gray-900/80 backdrop-blur shadow-md py-4 border-b border-purple-700 dark:border-purple-700 font-space-grotesk">
   <div class="container mx-auto px-4 flex items-center justify-between">
     <div routerLink="/" class="text-2xl font-bold text-gray-800 dark:text-gray-100 cursor-pointer select-none">
-      CASA B
+      <img src="assets/casab2.jpg" alt="Logo" class="w-12 h-12">
     </div>
 
     <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-2 mx-auto rounded-full bg-gray-50 dark:bg-gray-800/60 border border-purple-700 dark:border-gray-700 px-3 py-2 shadow-sm">
+    <nav class="hidden md:flex items-center gap-2 mx-auto rounded-full bg-gray-50 dark:bg-gray-800/60 border border-purple-700 dark:border-casabgreen px-3 py-2 shadow-sm">
       <a
         routerLink="/events"
         #rlaEvents="routerLinkActive"
@@ -65,11 +65,18 @@
     <!-- Action buttons -->
     <div class="flex items-center gap-2">
       <!-- Dark mode toggle -->
-      <button (click)="toggleDark()" type="button" class="inline-flex items-center gap-1 rounded-full border border-gray-200 dark:border-gray-700 px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white/70 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-800 transition-colors">
+      <button (click)="toggleDark()" type="button" class="inline-flex items-center gap-1 rounded-full border border-casabgreen dark:border-casabgreen px-3 py-1.5 text-sm font-medium text-casabgreen dark:text-casabgreen bg-white/70 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-800 transition-colors">
         <span class="material-icons text-base" [class.hidden]="isDarkMode">dark_mode</span>
         <span class="material-icons text-base" [class.hidden]="!isDarkMode">light_mode</span>
         <span class="sr-only">Toggle theme</span>
       </button>
+
+      <a href="https://www.instagram.com/casab.pei/" class="inline-flex items-center gap-1 rounded-full border border-casabgreen dark:border-casabgreen px-3 py-1.5 text-sm font-medium text-gray-700 dark:text-gray-200 bg-white/70 dark:bg-gray-800/70 hover:bg-white dark:hover:bg-gray-800 transition-colors">
+        <span><svg class="w-6 h-6 text-casabgreen dark:text-casabgreen" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path fill="currentColor" fill-rule="evenodd" d="M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Zm5-3a3 3 0 0 0-3 3v8a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3V8a3 3 0 0 0-3-3H8Zm7.597 2.214a1 1 0 0 1 1-1h.01a1 1 0 1 1 0 2h-.01a1 1 0 0 1-1-1ZM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm-5 3a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z" clip-rule="evenodd"/>
+        </svg>
+        </span>
+      </a>
 
       <!-- Mobile menu button -->
       <button type="button" class="md:hidden inline-flex items-center justify-center rounded-full p-2 text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none" (click)="toggleMenu()" aria-label="Toggle menu">
