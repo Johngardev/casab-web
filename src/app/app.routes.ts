@@ -7,6 +7,11 @@ export const routes: Routes = [
     component: LayoutComponent,
     children: [
       {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+      },
+      {
         path: 'home',
         loadComponent: () => import('./screens/home/home.component').then(c => c.HomeComponent)
       },
@@ -41,5 +46,4 @@ export const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-  
 ];

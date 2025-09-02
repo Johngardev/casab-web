@@ -22,8 +22,6 @@ export class EventCardComponent {
 
   showEventDetails(){
     this.dialog.open(ShowEventDetailsComponent, {
-      width: '600px',
-      height: '600px',
       data: { event: this.eventData }
     });
   }

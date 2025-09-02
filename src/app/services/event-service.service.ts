@@ -44,7 +44,7 @@ export class EventServiceService {
     },
     {
       id: 6,
-      title: 'Expo de Moda',
+      title: 'Expo de Moda Sostenible',
       imageUrl: '/assets/casab.jpg',
       date: '20 de Septiembre',
       location: 'Casa B'
