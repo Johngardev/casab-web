@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       colors: {
         casabgreen: '#B7FFAB',
+        casapurple: '#6101FF',
       },
       fontFamily: {
         'space-grotesk': ['Space Grotesk', 'sans-serif'],
