@@ -1,55 +1,60 @@
-<footer class="bg-gray-900 text-white py-16 px-6 md:px-12 font-space-grotesk">
-  <div class="container mx-auto">
-    
-    <div class="mb-12">
-      <p class="text-7xl md:text-8xl font-extrabold text-casabgreen leading-none tracking-tighter">
-        CONTACTO
-      </p>
-    </div>
+<footer class="bg-gray-900 text-white py-8 px-3 md:px-12 font-space-grotesk">
+  <div class="container mx-auto flex flex-row">
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
-      
-      <div class="md:col-span-3 flex items-end">
+    <div class="flex flex-col">
+      <div class="m-12">
+        <p class="text-7xl md:text-8xl font-extrabold text-casabgreen leading-none tracking-tighter">
+          CONTACTO
+        </p>
+      </div>
+
+      <div class="flex items-end m-12">
         <img src="/assets/Logo.svg" alt="Logo Casa B" class="w-24 h-auto">
       </div>
-
-      <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-8">
-        
-        <div>
-          <ul class="space-y-2 text-lg">
-            <li><a href="mailto:info@casab.home" class="hover:text-casabgreen transition-colors">INFOCASAB.HOME</a></li>
-            <li><p class="text-gray-400">Av 30 Ago #50a - 34. <br> Pereira, Colombia.</p></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="font-semibold text-gray-400 mb-3">SOCIAL</p>
-          <ul class="space-y-2 text-lg">
-            <li><a href="#" class="hover:text-casabgreen transition-colors">INSTAGRAM</a></li>
-            <li><a href="#" class="hover:text-casabgreen transition-colors">SOUNDCLOUD</a></li>
-            <li><a href="#" class="hover:text-casabgreen transition-colors">RESIDENT ADVISOR</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <p class="font-semibold text-gray-400 mb-3">RESIDENTES</p>
-          <ul class="space-y-2 text-lg">
-            <li><a href="#" class="hover:text-casabgreen transition-colors">SPECTRUM666</a></li>
-            <li><a href="#" class="hover:text-casabgreen transition-colors">PSIOCODELIO</a></li>
-            <li><a href="#" class="hover:text-casabgreen transition-colors">CYBERGOTHZZ</a></li>
-            <li><a href="#" class="hover:text-casabgreen transition-colors">FAILURE</a></li>
-            <li><a href="#" class="hover:text-casabgreen transition-colors">HOMMY</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="md:col-span-2 flex items-end justify-end">
-        <button class="text-4xl hover:text-casabgreen transition-colors" (click)="scrollToTop()">
-          &uarr;
-        </button>
-      </div>
-      
     </div>
+
+    <div class="flex flex-col ml-64 text-right">
+      <div class="flex flex-col">
+        <ul class="space-y-2 text-lg">
+          <li>
+            <p href="mailto:info@casab.home" class="hover:text-casabgreen transition-colors">INFO&#64;CASAB.HOME</p>
+          </li>
+          <li>
+            <p class="text-gray-400">Av 30 Ago #50a - 34. <br> Pereira, Colombia.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col">
+        <p class="font-bold text-gray-400 mb-3">SOCIAL</p>
+        <ul class="space-y-2 text-lg">
+          <li><a href="https://www.instagram.com/casab.pei/"
+              class="hover:text-casabgreen transition-colors">INSTAGRAM</a></li>
+          <li><a href="#" class="hover:text-casabgreen transition-colors">SOUNDCLOUD</a></li>
+          <li><a href="#" class="hover:text-casabgreen transition-colors">RESIDENT ADVISOR</a></li>
+        </ul>
+      </div>
+
+      <div class="flex flex-col">
+        <p class="font-bold text-gray-400 mb-3">RESIDENTES</p>
+        <ul class="space-y-2 text-lg">
+          <li><a href="#" class="hover:text-casabgreen transition-colors">SPECTRUM666</a></li>
+          <li><a href="#" class="hover:text-casabgreen transition-colors">PSIOCODELIO</a></li>
+          <li><a href="https://www.instagram.com/cybergothzz?igsh=OW5xOHVpbXFza2k3&utm_source=qr"
+              class="hover:text-casabgreen transition-colors">CYBERGOTHZZ</a></li>
+          <li><a href="#" class="hover:text-casabgreen transition-colors">FAILURE</a></li>
+          <li><a href="#" class="hover:text-casabgreen transition-colors">HOMMY</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="flex items-end justify-end ml-80">
+      <button class="text-4xl hover:text-casabgreen transition-colors" (click)="scrollToTop()">
+        &uarr;
+      </button>
+    </div>
+
+
   </div>
 </footer>
