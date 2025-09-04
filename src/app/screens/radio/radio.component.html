@@ -1,1 +1,37 @@
-<p>radio works!</p>
+<section class="p-4 bg-[#0F1720] text-white font-space-grotesk min-h-screen">
+  <!-- Barra superior: estado en vivo -->
+  <header
+    class="flex justify-between items-center mb-6 px-4 py-3"
+    [ngClass]="isLive ? 'bg-casabgreen border-black' : 'bg-black/40 border-black'"
+  >
+    <div class="flex items-center">
+      <button class="grid place-items-center h-8 w-8 rounded-full border border-black mr-8" [ngClass]="isLive ? 'bg-casabgreen' : 'bg-black/20'">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" class="size-6">
+          <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+        </svg>        
+      </button>
+      <div class="text-lg">
+        <div class="font-semibold" [class.text-black]="isLive">{{ currentTrack }}</div>
+        @if (!isLive) {
+          <div class="text-xs text-white/70">No hay transmisión en vivo</div>
+        } 
+      </div>
+    </div>
+    <span
+      class="text-xs font-semibold px-3 py-1 border"
+      [ngClass]="isLive ? 'bg-casabgreen text-black border-black' : 'bg-black/40 text-white border-casabgreen'"
+    >
+      {{ isLive ? 'NOW LIVE' : 'OFFLINE' }}
+    </span>
+  </header>
+
+  <!-- Título -->
+   <div class="m-8">
+    <p class="text-2xl font-bold text-casabgreen">Programación</p>
+   </div>
+
+  <!-- Tabla de programación -->
+  <mat-grid-list cols="2" rowHeight="2:1">
+    
+  </mat-grid-list>
+</section>
