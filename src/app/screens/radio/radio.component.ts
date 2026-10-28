@@ -1,13 +1,25 @@
 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIcon } from "@angular/material/icon";
+
+interface CalendarEvent {
+  event_date: Date;
+  event_title: string;
+  event_theme: string;
+}
+
+interface ThemeOption {
+  value: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-radio',
   standalone: true,
-  imports: [CommonModule, MatGridListModule, MatIcon],
+  imports: [CommonModule, MatGridListModule, MatIcon, FormsModule],
   templateUrl: './radio.component.html',
   styleUrls: ['./radio.component.css']
 })
@@ -16,64 +28,118 @@ export class RadioComponent {
   isLive = true;
   currentTrack = 'Aroma de falso amor - Oscar Mulero';
 
-  // Días y horas
-  days: string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-  hours: string[] = [
-    '09:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00'
+  readonly MONTH_NAMES = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+  ];
+  readonly DAYS = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+
+  // Variables de estado del calendario
+  month: number = 0;
+  year: number = 2026;
+  no_of_days: number[] = [];
+  blankdays: number[] = [];
+
+  // Eventos de programación
+  events: CalendarEvent[] = [
+    {
+      event_date: new Date(2026, 3, 1),
+      event_title: "Apertura de Sesión DJ Set",
+      event_theme: 'blue'
+    },
+    {
+      event_date: new Date(2026, 3, 10),
+      event_title: "Especial Vinilos",
+      event_theme: 'red'
+    },
+    {
+      event_date: new Date(2026, 3, 16),
+      event_title: "Transmisión en Vivo Casa B",
+      event_theme: 'green'
+    }
   ];
 
-  // Programación de ejemplo (day->hour->texto)
-  // Puedes reemplazarlo por datos reales más adelante
-  schedule: Record<string, Record<string, string>> = {
-    Lunes: {
-      '10:00': 'Audit current product page check out process',
-      '13:00': 'Audit current product page…',
-      '16:00': 'Audit current product page…',
-      '19:00': 'Audit current product page…'
-    },
-    Martes: {
-      '11:00': 'Mockup feature designs',
-      '14:00': 'Insert text here',
-      '16:00': 'Insert text here',
-      '17:00': 'Insert text here',
-      '19:00': 'Insert text here',
-      '20:00': 'Insert text here'
-    },
-    Miercoles: {
-      '09:00': 'Prototyping',
-      '11:00': 'Develop sitemap',
-      '14:00': 'Mockup feature designs',
-      '16:00': 'Develop sitemap',
-      '19:00': 'Develop sitemap'
-    },
-    Jueves: {
-      '10:00': 'Address feedback from client about deliverables',
-      '13:00': 'Address feedback from…',
-      '16:00': 'Address feedback from…',
-      '19:00': 'Address feedback from…'
-    },
-    Viernes: {
-      '09:00': 'Feedback',
-      '11:00': 'Messaging docs',
-      '16:00': 'Test check out button',
-      '19:00': 'Test check out button'
-    },
-    Sabado: {
-      '09:00': 'Testing',
-      '11:00': 'Insert text here',
-      '12:00': 'Release',
-      '15:00': 'Testing',
-      '18:00': 'Testing'
-    },
-    Domingo: {
-      '09:00': 'Release',
-      '12:00': 'Release',
-      '15:00': 'Release',
-      '18:00': 'Release'
-    }
-  };
+  // Formulario del Modal
+  openEventModal = false;
+  event_title = '';
+  event_date = '';
+  event_theme = 'blue';
 
-  getCell(day: string, hour: string): string | undefined {
-    return this.schedule[day]?.[hour];
+  themes: ThemeOption[] = [
+    { value: "blue", label: "Azul (Tema)" },
+    { value: "red", label: "Rojo (Tema)" },
+    { value: "yellow", label: "Amarillo (Tema)" },
+    { value: "green", label: "Verde / CasaB (Tema)" },
+    { value: "purple", label: "Morado (Tema)" }
+  ];
+
+  ngOnInit(): void {
+    this.initDate();
+    this.getNoOfDays();
+  }
+
+  initDate(): void {
+    const today = new Date();
+    this.month = today.getMonth();
+    this.year = today.getFullYear();
+  }
+
+  isToday(date: number): boolean {
+    const today = new Date();
+    const d = new Date(this.year, this.month, date);
+    return today.toDateString() === d.toDateString();
+  }
+
+  getNoOfDays(): void {
+    let daysInMonth = new Date(this.year, this.month + 1, 0).getDate();
+    let dayOfWeek = new Date(this.year, this.month).getDay();
+    
+    let blankdaysArray: number[] = [];
+    for (let i = 1; i <= dayOfWeek; i++) {
+      blankdaysArray.push(i);
+    }
+
+    let daysArray: number[] = [];
+    for (let i = 1; i <= daysInMonth; i++) {
+      daysArray.push(i);
+    }
+    
+    this.blankdays = blankdaysArray;
+    this.no_of_days = daysArray;
+  }
+
+  changeMonth(val: number): void {
+    if (val === -1 && this.month > 0) {
+      this.month--;
+    } else if (val === 1 && this.month < 11) {
+      this.month++;
+    }
+    this.getNoOfDays();
+  }
+
+  showEventModal(date: number): void {
+    this.openEventModal = true;
+    this.event_date = new Date(this.year, this.month, date).toDateString();
+  }
+
+  filterEventsForDate(date: number) {
+    const targetDate = new Date(this.year, this.month, date).toDateString();
+    return this.events.filter(e => new Date(e.event_date).toDateString() === targetDate);
+  }
+
+  addEvent(): void {
+    if (!this.event_title.trim()) return;
+
+    this.events.push({
+      event_date: new Date(this.event_date),
+      event_title: this.event_title,
+      event_theme: this.event_theme
+    });
+
+    // Limpiar formulario y cerrar modal
+    this.event_title = '';
+    this.event_date = '';
+    this.event_theme = 'blue';
+    this.openEventModal = false;
   }
 }
