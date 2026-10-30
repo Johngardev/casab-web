@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EventCardComponent } from '../../components/event-card/event-card.component';
 import { EventServiceService } from '../../services/event-service.service';
-import { Event } from '../../interfaces/event.interface';
+import { AppEvent } from '../../interfaces/appevent.interface';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +14,7 @@ import { Event } from '../../interfaces/event.interface';
 export class HomeComponent {
   readonly eventService = inject(EventServiceService);
 
-  eventosProximos: Event[] = [];
+  eventosProximos: AppEvent[] = [];
 
   testimonios = [
     {
@@ -36,7 +36,10 @@ export class HomeComponent {
     this.eventosProximos = all.slice().sort((a,b) => this.parseSpanishDate(a.date).getTime() - this.parseSpanishDate(b.date).getTime()).slice(0, 3);
   }
 
-  private parseSpanishDate(dateStr: string): Date {
+  private parseSpanishDate(dateStr: string | Date): Date {
+    if (dateStr instanceof Date) {
+      return dateStr;
+    }
     // Espera formato: "28 de Septiembre"
     const monthMap: Record<string, number> = {
       'enero': 0,

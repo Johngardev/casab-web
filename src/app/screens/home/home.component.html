@@ -43,7 +43,7 @@
 
       <div class="flex space-x-8 py-12">
         @for (evento of eventosProximos; track $index) {
-          <app-event-card [eventData]="evento"></app-event-card>
+          <app-event-card [eventData]="$any(evento)"></app-event-card>
         }
       </div>
       <div class="flex justify-center">

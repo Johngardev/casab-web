@@ -1,15 +1,11 @@
 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIcon } from "@angular/material/icon";
-
-interface CalendarEvent {
-  event_date: Date;
-  event_title: string;
-  event_theme: string;
-}
+import { EventServiceService } from '../../services/event-service.service';
+import { AppEvent } from '../../interfaces/appevent.interface';
 
 interface ThemeOption {
   value: string;
@@ -28,6 +24,8 @@ export class RadioComponent {
   isLive = true;
   currentTrack = 'Aroma de falso amor - Oscar Mulero';
 
+  readonly eventService = inject(EventServiceService);
+
   readonly MONTH_NAMES = [
     'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
@@ -37,27 +35,12 @@ export class RadioComponent {
   // Variables de estado del calendario
   month: number = 0;
   year: number = 2026;
+  years: number[] = [];
   no_of_days: number[] = [];
   blankdays: number[] = [];
 
   // Eventos de programación
-  events: CalendarEvent[] = [
-    {
-      event_date: new Date(2026, 3, 1),
-      event_title: "Apertura de Sesión DJ Set",
-      event_theme: 'blue'
-    },
-    {
-      event_date: new Date(2026, 3, 10),
-      event_title: "Especial Vinilos",
-      event_theme: 'red'
-    },
-    {
-      event_date: new Date(2026, 3, 16),
-      event_title: "Transmisión en Vivo Casa B",
-      event_theme: 'green'
-    }
-  ];
+  events: AppEvent[] = []
 
   // Formulario del Modal
   openEventModal = false;
@@ -75,6 +58,8 @@ export class RadioComponent {
 
   ngOnInit(): void {
     this.initDate();
+    this.generateYears();
+    this.loadEvents();
     this.getNoOfDays();
   }
 
@@ -82,6 +67,10 @@ export class RadioComponent {
     const today = new Date();
     this.month = today.getMonth();
     this.year = today.getFullYear();
+  }
+
+  loadEvents(): void {
+    this.events = this.eventService.getEvents();
   }
 
   isToday(date: number): boolean {
@@ -108,6 +97,17 @@ export class RadioComponent {
     this.no_of_days = daysArray;
   }
 
+  generateYears(): void {
+    const currentYear = new Date().getFullYear();
+    const startYear = currentYear - 5; // Puedes ajustarlo si necesitas más años hacia atrás
+    const endYear = currentYear + 5;   // Años hacia adelante
+    
+    this.years = [];
+    for (let i = startYear; i <= endYear; i++) {
+      this.years.push(i);
+    }
+  }
+
   changeMonth(val: number): void {
     if (val === -1 && this.month > 0) {
       this.month--;
@@ -124,22 +124,35 @@ export class RadioComponent {
 
   filterEventsForDate(date: number) {
     const targetDate = new Date(this.year, this.month, date).toDateString();
-    return this.events.filter(e => new Date(e.event_date).toDateString() === targetDate);
+    return this.events.filter(e => {
+      const eventDateObj = typeof e.date === 'string' ? new Date(e.date) : e.date;
+      return eventDateObj.toDateString() === targetDate;
+    });
   }
 
   addEvent(): void {
     if (!this.event_title.trim()) return;
 
-    this.events.push({
-      event_date: new Date(this.event_date),
-      event_title: this.event_title,
+    // Guardar a través del servicio
+    this.eventService.addEvent({
+      title: this.event_title,
+      imageUrl: '/assets/casab.jpg', // Imagen por defecto o seleccionable
+      date: new Date(this.event_date),
+      location: 'Casa B',
       event_theme: this.event_theme
     });
+
+    // Recargar eventos locales
+    this.loadEvents();
 
     // Limpiar formulario y cerrar modal
     this.event_title = '';
     this.event_date = '';
     this.event_theme = 'blue';
     this.openEventModal = false;
+  }
+
+  onYearChange(): void {
+    this.getNoOfDays();
   }
 }

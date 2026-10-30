@@ -1,63 +1,53 @@
 import { Injectable } from '@angular/core';
-import { Event } from '../interfaces/event.interface';
+import { AppEvent } from '../interfaces/appevent.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventServiceService {
 
-  private events: Event[] = [
+  private events: AppEvent[] = [
     {
       id: 1,
       title: 'Festival de Música Electrónica',
       imageUrl: '/assets/casab.jpg',
-      date: '28 de Septiembre',
-      location: 'Casa B'
+      date: new Date(2026, 8, 28), // Usar objetos Date reales facilita la validación
+      location: 'Casa B',
+      category: 'Musica',
+      event_theme: 'blue'
     },
     {
       id: 2,
       title: 'Exposición de Arte "Renacer"',
       imageUrl: '/assets/casab.jpg',
-      date: '10 de Octubre',
-      location: 'Casa B Galería'
+      date: new Date(2026, 9, 10),
+      location: 'Casa B Galería',
+      category: 'Arte',
+      event_theme: 'red'
     },
     {
       id: 3,
       title: 'Noche de Cine Independiente',
       imageUrl: '/assets/casab.jpg',
-      date: '15 de Octubre',
-      location: 'Casa B Cine'
-    },
-    {
-      id: 4,
-      title: 'Taller de Sostenibilidad',
-      imageUrl: '/assets/casab.jpg',
-      date: '20 de Octubre',
-      location: 'Reserva Natural'
-    },
-    {
-      id: 5,
-      title: 'Noche de Poesía y Erotismo',
-      imageUrl: '/assets/casab.jpg',
-      date: '25 de Octubre',
-      location: 'Casa B Café'
-    },
-    {
-      id: 6,
-      title: 'Expo de Moda Sostenible',
-      imageUrl: '/assets/casab.jpg',
-      date: '20 de Septiembre',
-      location: 'Casa B'
+      date: new Date(2026, 9, 15),
+      location: 'Casa B Cine',
+      category: 'Cine',
+      event_theme: 'green'
     }
   ];
 
   constructor() { }
 
-  getEvents(): Event[] {
+  getEvents(): AppEvent[] {
     return this.events;
   }
 
-  getEventById(id: number): Event | undefined {
+  getEventById(id: number): AppEvent | undefined {
     return this.events.find(event => event.id === id);
+  }
+
+  addEvent(newEvent: Omit<AppEvent, 'id'>): void {
+    const id = this.events.length > 0 ? Math.max(...this.events.map(event => event.id)) + 1 : 1;
+    this.events.push({ id, ...newEvent });
   }
 }

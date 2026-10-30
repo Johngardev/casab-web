@@ -14,7 +14,7 @@ import { ShowEventDetailsComponent } from './show-event-details/show-event-detai
 })
 export class EventCardComponent {
 
-  @Input() eventData!: { id: number; title: string; imageUrl: string; date: string; location: string; };
+  @Input() eventData!: { id: number; title: string; imageUrl: string; date: string | Date; location: string; };
 
   readonly dialog = inject(MatDialog);
   
