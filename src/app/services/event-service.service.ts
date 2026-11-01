@@ -33,6 +33,15 @@ export class EventServiceService {
       location: 'Casa B Cine',
       category: 'Cine',
       event_theme: 'green'
+    },
+    {
+      id: 4,
+      title: 'Taller de Gastronomía Sostenible',
+      imageUrl: '/assets/casab.jpg',
+      date: new Date(2026, 9, 20),
+      location: 'Casa B Cocina',
+      category: 'Gastronomia',
+      event_theme: 'yellow'
     }
   ];
 

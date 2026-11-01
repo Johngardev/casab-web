@@ -3,6 +3,7 @@ export interface AppEvent {
     title: string;
     imageUrl: string;
     date: string | Date; // Puede ser un string o un objeto Date
+    time?: string; // Hora del evento en formato HH:mm
     location: string;
     category?: 'Musica' | 'Arte' | 'Gastronomia' | 'Tecnología' | 'Cine' | 'Agro-ecologia' | 'Literatura';
     description?: string; // La descripción es opcional

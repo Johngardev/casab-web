@@ -42,10 +42,14 @@ export class RadioComponent {
   // Eventos de programación
   events: AppEvent[] = []
 
+  openDetailModal = false;
+  selectedEvent: AppEvent | null = null;
+
   // Formulario del Modal
   openEventModal = false;
   event_title = '';
   event_date = '';
+  event_time = '20:00'; // Hora por defecto
   event_theme = 'blue';
 
   themes: ThemeOption[] = [
@@ -138,6 +142,7 @@ export class RadioComponent {
       title: this.event_title,
       imageUrl: '/assets/casab.jpg', // Imagen por defecto o seleccionable
       date: new Date(this.event_date),
+      time: this.event_time, // Añadir la hora del evento
       location: 'Casa B',
       event_theme: this.event_theme
     });
@@ -148,8 +153,20 @@ export class RadioComponent {
     // Limpiar formulario y cerrar modal
     this.event_title = '';
     this.event_date = '';
+    this.event_time = '20:00';
     this.event_theme = 'blue';
     this.openEventModal = false;
+  }
+
+  viewEventDetails(event: AppEvent, e: MouseEvent): void {
+    e.stopPropagation(); // Evita que el clic se propague al calendario
+    this.selectedEvent = event;
+    this.openDetailModal = true;
+  }
+
+  closeDetailModal(): void {
+    this.openDetailModal = false;
+    this.selectedEvent = null;
   }
 
   onYearChange(): void {
