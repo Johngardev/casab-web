@@ -1,9 +1,9 @@
-<div class="relative bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg max-w-2xl w-full mx-auto overflow-hidden shadow-2xl font-space-grotesk">
+<div class="relative bg-gray-100 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg max-w-2xl w-full mx-auto overflow-y-auto shadow-2xl font-space-grotesk max-h-[calc(100dvh-2rem)]">
   
-  <img [src]="event.imageUrl" [alt]="event.title" class="w-full h-80 object-cover">
+  <img [src]="event.imageUrl" [alt]="event.title" class="w-full h-48 sm:h-80 object-cover">
   
-  <div class="p-6" style="background-image: url('/assets/paper.jpg'); background-size: cover; background-position: center;">
-    <p class="text-3xl font-bold text-gray-900 dark:text-gray-900 mb-2">{{ event.title }}</p>
+  <div class="p-4 sm:p-6" style="background-image: url('/assets/paper.jpg'); background-size: cover; background-position: center;">
+    <p class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-gray-900 mb-2 break-words">{{ event.title }}</p>
 
     <p class="text-gray-900 dark:text-gray-900 mb-2">DESCRIPTIONSIDNFIDEFPOWEFWEPJFWEOJF</p>
     
@@ -20,7 +20,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
       </svg>
-      <span>{{ event.location }}</span>
+      <span class="min-w-0 break-words">{{ event.location }}</span>
     </div>
 
     <p class="text-gray-900 dark:text-gray-900 mb-2">ARTISTAS INVITADOS</p>

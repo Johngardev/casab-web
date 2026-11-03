@@ -22,7 +22,10 @@ export class EventCardComponent {
 
   showEventDetails(){
     this.dialog.open(ShowEventDetailsComponent, {
-      data: { event: this.eventData }
+      data: { event: this.eventData },
+      width: '42rem',
+      maxWidth: 'calc(100vw - 2rem)',
+      maxHeight: 'calc(100dvh - 2rem)'
     });
   }
 

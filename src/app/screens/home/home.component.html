@@ -1,22 +1,26 @@
-<section class="relative h-screen flex flex-col justify-between items-center bg-cover bg-center" style="background-image: url('/assets/backgroundcasabweb.png');">
+<section class="relative min-h-screen flex flex-col justify-between items-center bg-cover bg-center"
+  style="background-image: url('/assets/backgroundcasabweb.png');">
   <div class="absolute inset-0 bg-black opacity-30"></div>
 
   <div class="relative z-10 flex flex-col items-center justify-center flex-grow p-4">
-    <p class="text-[10rem] md:text-8xl lg:text-9xl font-extrabold text-casabgreen leading-none mb-10 font-space-grotesk">
+    <p
+      class="text-[clamp(3.5rem,16vw,10rem)] font-extrabold text-casabgreen leading-none mb-6 sm:mb-10 font-space-grotesk">
       CASA B
     </p>
 
-    <button routerLink="/events" class="inline-block bg-casabgreen hover:opacity-90 text-stone-800 font-bold text-lg px-8 py-4 transition-opacity duration-300 shadow-lg font-space-grotesk">
+    <button routerLink="/events"
+      class="inline-block bg-casabgreen hover:opacity-90 text-stone-800 font-bold text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 transition-opacity duration-300 shadow-lg font-space-grotesk">
       Próximos eventos
     </button>
   </div>
 
-  <div class="relative z-10 w-full flex justify-between p-8 mb-16 text-casabgreen text-xl md:text-2xl font-light font-space-grotesk">
+  <div
+    class="relative z-10 w-full flex flex-col sm:flex-row sm:justify-between gap-4 p-4 sm:p-8 mb-8 sm:mb-16 text-casabgreen text-base sm:text-xl md:text-2xl font-light font-space-grotesk">
     <p class="max-w-md">
       Refugio para la música
       electrónica y la naturaleza
     </p>
-    <p class="max-w-md text-right">
+    <p class="max-w-md sm:text-right">
       Revolución cultural
       en la ciudad.
     </p>
@@ -26,37 +30,50 @@
 <section class="bg-gray-50 py-16 md:py-24 dark:bg-gray-800">
   <div class="container mx-auto px-4 font-space-grotesk">
     <p class="container mx-auto px-4 text-center text-gray-400 dark:text-gray-100">
-      Además de nuestra programación cultural, impulsamos un sueño aún más grande: la creación de una reserva natural con árboles nativos. Este proyecto refleja nuestro compromiso con la sostenibilidad y la preservación del ecosistema, demostrando que cultura y naturaleza pueden convivir en perfecta armonía.
+      Además de nuestra programación cultural, impulsamos un sueño aún más grande: la creación de una reserva natural
+      con árboles nativos. Este proyecto refleja nuestro compromiso con la sostenibilidad y la preservación del
+      ecosistema, demostrando que cultura y naturaleza pueden convivir en perfecta armonía.
     </p>
   </div>
 </section>
 
-<section class="bg-gray-400 dark:bg-gray-600">
-  <div class="container mx-auto px-10">
-    <div class="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-2 lg:gap-8 items-center">
+<section class="bg-gray-400 dark:bg-gray-600 py-12">
+  <div class="container mx-auto px-4 md:px-10">
+    <!-- Contenedor principal en cuadrícula alineado arriba (items-start) para evitar estiramientos extraños -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
 
-      <div class="text-center lg:text-left py-12 font-space-grotesk">
-        <p class="font-extrabold text-[10rem] md:text-[8rem] leading-none text-casabgreen">
+      <!-- Columna del Título -->
+      <div class="text-center md:text-left font-space-grotesk">
+        <p class="font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-[6rem] leading-none text-casabgreen uppercase tracking-tight">
           PRÓXI<br>MOS<br>EVEN<br>TOS
         </p>
       </div>
 
-      <div class="flex space-x-8 py-12">
+      <!-- Columna de Tarjetas: Limitada en ancho y centrada verticalmente -->
+      <div class="flex flex-col gap-6 justify-center items-center">
         @for (evento of eventosProximos; track $index) {
-          <app-event-card [eventData]="$any(evento)"></app-event-card>
+          <!-- Contenedor con ancho máximo para que la tarjeta no se expanda a lo loco -->
+          <div class="w-full max-w-sm">
+            <app-event-card [eventData]="$any(evento)"></app-event-card>
+          </div>
         }
-      </div>
-      <div class="flex justify-center">
+
         @if (eventosProximos.length === 0) {
-          <p>No hay eventos próximos</p>
+          <p class="text-stone-800 dark:text-stone-200 font-medium text-lg">No hay eventos próximos</p>
         }
       </div>
+
     </div>
-    <div class="flex justify-center py-8">
-      <button routerLink="/gallery" class="bg-casabgreen hover:opacity-90 text-stone-800 font-bold text-lg px-8 py-4 transition-opacity duration-300 shadow-lg font-space-grotesk">
+
+    <!-- Botón de Memorias -->
+    <div class="flex justify-center pt-12">
+      <button
+        routerLink="/gallery"
+        class="bg-casabgreen hover:opacity-90 text-stone-800 font-bold text-lg px-8 py-4 transition-opacity duration-300 shadow-lg font-space-grotesk cursor-pointer rounded-none">
         Memorias
       </button>
     </div>
+
   </div>
 </section>
 
@@ -65,7 +82,7 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
       <div class="relative">
-        
+
         <div class="border-2 border-black rounded-t-xl relative">
           <div class="bg-casabgreen p-4 rounded-t-xl text-center">
             <p class="text-4xl font-extrabold text-black mb-4">APOYANOS</p>
@@ -73,12 +90,13 @@
 
           <div class="p-8">
             <img src="/assets/Early Bird.png" alt="Logo Casa B" class="w-24 h-auto mb-4">
-          
+
             <p class="text-black font-semibold text-lg mb-6">
               CADA DONACIÓN ES UN PASO HACIA UN FUTURO MÁS SOSTENIBLE Y LLENO DE ARTE.
             </p>
-          
-            <button routerLink="/donate" class="bg-black text-white font-bold text-2xl py-3 px-12 border-2 border-black hover:bg-gray-800 transition-colors">
+
+            <button routerLink="/donate"
+              class="bg-black text-white font-bold text-2xl py-3 px-12 border-2 border-black hover:bg-gray-800 transition-colors">
               DONAR
             </button>
           </div>
@@ -86,16 +104,19 @@
 
         <div class="bg-casapurple border-2 border-t-0 border-black p-8 rounded-b-xl -mt-1">
           <p class="text-white font-semibold text-lg">
-            TU CONTRIBUCIÓN NOS PERMITE CONTINUAR EXPANDIENDO NUESTRA LABOR CULTURAL Y HACER REALIDAD EL PROYECTO DE NUESTRA RESERVA NATURAL.
+            TU CONTRIBUCIÓN NOS PERMITE CONTINUAR EXPANDIENDO NUESTRA LABOR CULTURAL Y HACER REALIDAD EL PROYECTO DE
+            NUESTRA RESERVA NATURAL.
           </p>
         </div>
 
-        <img src="/assets/Smiley.png" alt="Sticker decorativo" class="absolute top-28 -right-8 w-24 h-24 transform rotate-12 hidden lg:block">
+        <img src="/assets/Smiley.png" alt="Sticker decorativo"
+          class="absolute top-28 -right-8 w-24 h-24 transform rotate-12 hidden lg:block">
 
       </div>
 
       <div>
-        <img src="/assets/casab3.png" alt="Rincón oscuro con una bicicleta" class="rounded-lg border-4 border-purple-500 shadow-xl w-full h-full object-cover">
+        <img src="/assets/casab3.png" alt="Rincón oscuro con una bicicleta"
+          class="rounded-lg border-4 border-purple-500 shadow-xl w-full h-full object-cover">
       </div>
 
     </div>

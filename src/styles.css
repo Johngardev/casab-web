@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 html, body, input, select, textarea, button {
-   height: 100%; font-family: 'Space Grotesk', sans-serif !important;
+   font-family: 'Space Grotesk', sans-serif !important;
 }
 
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}

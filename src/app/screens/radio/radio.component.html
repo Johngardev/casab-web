@@ -1,9 +1,9 @@
 <section class="bg-gray-900 text-white font-space-grotesk min-h-screen">
   <!-- Barra superior: estado en vivo -->
-  <header class="flex justify-between items-center mb-6 px-4 py-3"
+  <header class="flex justify-between items-center gap-3 mb-6 px-4 py-3"
     [ngClass]="isLive ? 'bg-casabgreen border-black' : 'bg-black/40 border-black'">
     <div class="flex items-center">
-      <button class="grid place-items-center h-8 w-8 rounded-full border border-black mr-8"
+      <button class="grid place-items-center h-8 w-8 shrink-0 rounded-full border border-black mr-3 sm:mr-8"
         [ngClass]="isLive ? 'bg-casabgreen' : 'bg-black/20'">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" class="size-6">
           <path fill-rule="evenodd"
@@ -11,8 +11,8 @@
             clip-rule="evenodd" />
         </svg>
       </button>
-      <div class="text-lg">
-        <div class="font-semibold" [class.text-black]="isLive">{{ currentTrack }}</div>
+      <div class="min-w-0 text-lg">
+        <div class="truncate font-semibold" [class.text-black]="isLive">{{ currentTrack }}</div>
         @if (!isLive) {
         <div class="text-xs text-white/70">No hay transmisión en vivo</div>
         }
@@ -25,21 +25,21 @@
   </header>
 
   <!-- Título -->
-  <div class="m-8">
+  <div class="m-4 sm:m-8">
     <p class="text-2xl font-bold text-casabgreen">Programación</p>
     <p class="text-gray-400">Descubre los eventos y actividades que tenemos para ti, tambien puedes solicitar la
       programación de nuevos eventos en este espacio que es para todos.</p>
   </div>
 
   <!-- Componente de Calendario Integrado -->
-  <div class="mx-8">
+  <div class="mx-2 sm:mx-8">
     <div class="bg-gray-800 rounded-lg shadow-xl overflow-hidden border border-gray-700">
 
       <!-- Cabecera Mes / Año y Botones -->
-      <div class="flex items-center justify-between py-4 px-6 bg-gray-900 border-b border-gray-700">
-        <div class="flex items-center gap-3">
+      <div class="flex flex-wrap items-center justify-between gap-3 py-4 px-3 sm:px-6 bg-gray-900 border-b border-gray-700">
+        <div class="flex min-w-0 items-center gap-2 sm:gap-3">
           <!-- Mes actual en texto -->
-          <span class="text-xl font-bold text-white min-w-[100px]">{{ MONTH_NAMES[month] }}</span>
+          <span class="text-lg sm:text-xl font-bold text-white min-w-[100px]">{{ MONTH_NAMES[month] }}</span>
 
           <!-- Selector de Años desplegable -->
           <select [(ngModel)]="year" (ngModelChange)="getNoOfDays()"
@@ -91,7 +91,7 @@
           <!-- Días activos del mes -->
           @for (date of no_of_days; track date) {
           <div
-            class="min-h-[110px] p-2 border-r border-b border-gray-700 relative flex flex-col justify-between group hover:bg-gray-750 transition-colors">
+            class="min-h-[72px] sm:min-h-[110px] p-1 sm:p-2 border-r border-b border-gray-700 relative flex flex-col justify-between group hover:bg-gray-750 transition-colors">
             <div (click)="showEventModal(date)"
               class="inline-flex w-6 h-6 items-center justify-center cursor-pointer text-center text-xs font-semibold rounded-full transition ease-in-out duration-100"
               [ngClass]="{
@@ -102,10 +102,10 @@
             </div>
 
             <!-- Lista de Eventos por Día -->
-            <div class="overflow-y-auto mt-1 space-y-1 max-h-[70px]">
+            <div class="overflow-y-auto mt-1 space-y-1 max-h-[48px] sm:max-h-[70px]">
               @for (event of filterEventsForDate(date); track event.title) {
               <div (click)="viewEventDetails(event, $event)"
-                class="px-2 py-1 rounded text-xs overflow-hidden border shadow-sm cursor-pointer" [ngClass]="{
+                class="px-1 sm:px-2 py-1 rounded text-[10px] sm:text-xs overflow-hidden border shadow-sm cursor-pointer" [ngClass]="{
                       'border-blue-500/30 text-blue-200 bg-blue-900/40': event.event_theme === 'blue',
                       'border-red-500/30 text-red-200 bg-red-900/40': event.event_theme === 'red',
                       'border-yellow-500/30 text-yellow-200 bg-yellow-900/40': event.event_theme === 'yellow',
@@ -126,7 +126,7 @@
   <!-- Modal para Agregar Eventos -->
   @if (openEventModal) {
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-    <div class="bg-gray-800 border border-gray-700 w-full max-w-lg rounded-xl shadow-2xl overflow-hidden p-6 relative">
+    <div class="bg-gray-800 border border-gray-700 w-full max-w-lg max-h-[calc(100dvh-2rem)] rounded-xl shadow-2xl overflow-y-auto p-4 sm:p-6 relative">
 
       <!-- Botón cerrar -->
       <button
@@ -191,7 +191,7 @@
   <!-- Modal para Ver Detalles del Evento Seleccionado -->
   @if (openDetailModal && selectedEvent) {
   <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-    <div class="bg-gray-800 border border-gray-700 w-full max-w-lg rounded-xl shadow-2xl overflow-hidden relative">
+    <div class="bg-gray-800 border border-gray-700 w-full max-w-lg max-h-[calc(100dvh-2rem)] rounded-xl shadow-2xl overflow-y-auto relative">
 
       <!-- Imagen de cabecera del evento si la tiene -->
       @if (selectedEvent.imageUrl) {
@@ -210,16 +210,16 @@
         </svg>
       </button>
 
-      <div class="p-6">
+      <div class="p-4 sm:p-6">
         <span
           class="text-xs font-semibold px-2.5 py-1 rounded uppercase tracking-wider bg-casabgreen/20 text-casabgreen mb-2 inline-block">
           {{ selectedEvent.category || 'Evento Casa B' }}
         </span>
 
-        <h2 class="font-bold text-2xl mb-3 text-white">{{ selectedEvent.title }}</h2>
+        <h2 class="font-bold text-xl sm:text-2xl mb-3 text-white break-words">{{ selectedEvent.title }}</h2>
 
         <div class="space-y-2 text-gray-300 text-sm mb-6">
-          <p class="flex items-center gap-2">
+          <p class="flex items-center gap-2 break-words">
             <svg class="w-4 h-4 text-casabgreen" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />

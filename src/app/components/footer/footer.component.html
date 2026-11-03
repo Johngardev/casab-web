@@ -1,21 +1,21 @@
-<footer class="bg-gray-900 text-white py-8 px-3 md:px-12 font-space-grotesk">
-  <div class="container mx-auto flex flex-row">
+<footer class="bg-gray-900 text-white py-8 px-4 sm:px-8 font-space-grotesk">
+  <div class="container mx-auto flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
 
-    <div class="flex flex-col">
-      <div class="m-12">
-        <p class="text-7xl md:text-8xl font-extrabold text-casabgreen leading-none tracking-tighter">
+    <div class="flex flex-col gap-6">
+      <div>
+        <p class="text-4xl sm:text-6xl lg:text-8xl font-extrabold text-casabgreen leading-none tracking-tighter">
           CONTACTO
         </p>
       </div>
 
-      <div class="flex items-end m-12">
-        <img src="/assets/Logo.svg" alt="Logo Casa B" class="w-24 h-auto">
+      <div class="flex items-end">
+        <img src="/assets/Logo.svg" alt="Logo Casa B" class="w-20 sm:w-24 h-auto">
       </div>
     </div>
 
-    <div class="flex flex-col ml-64 text-left">
+    <div class="flex flex-col gap-6 text-left md:ml-8">
       <div class="flex flex-col">
-        <ul class="space-y-2 text-lg">
+        <ul class="space-y-2 text-base sm:text-lg">
           <li>
             <p href="mailto:info@casab.home" class="hover:text-casabgreen transition-colors">INFO&#64;CASAB.HOME</p>
           </li>
@@ -27,7 +27,7 @@
 
       <div class="flex flex-col">
         <p class="font-bold text-gray-400 mb-3">SOCIAL</p>
-        <ul class="space-y-2 text-lg">
+        <ul class="space-y-2 text-base sm:text-lg">
           <li><a href="https://www.instagram.com/casab.pei/"
               class="hover:text-casabgreen transition-colors">INSTAGRAM</a></li>
           <li><a href="#" class="hover:text-casabgreen transition-colors">SOUNDCLOUD</a></li>
@@ -37,15 +37,15 @@
 
       <div class="flex flex-col">
         <p class="font-bold text-gray-400 mb-3">RESIDENTES</p>
-        <ul class="space-y-2 text-lg">
+        <ul class="space-y-2 text-base sm:text-lg">
           <li><a href="#" class="hover:text-casabgreen transition-colors">ARDEA</a></li>
         </ul>
       </div>
 
     </div>
 
-    <div class="flex items-end justify-end ml-80">
-      <button class="text-4xl hover:text-casabgreen transition-colors" (click)="scrollToTop()">
+    <div class="flex items-end justify-end self-end md:self-auto">
+      <button class="grid h-12 w-12 place-items-center text-4xl hover:text-casabgreen transition-colors" (click)="scrollToTop()" aria-label="Volver arriba">
         &uarr;
       </button>
     </div>

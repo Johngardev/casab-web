@@ -1,9 +1,9 @@
 
-<div class="bg-stone-200 dark:bg-gray-600 border border-violet-800 dark:border-violet-600 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-105 font-space-grotesk">
-  <img class="w-full h-96 object-cover" [src]="eventData.imageUrl" alt="Imagen del evento">
+<div class="bg-stone-200 dark:bg-gray-600 border border-violet-800 dark:border-violet-600 rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:scale-[1.02] font-space-grotesk">
+  <img class="w-full aspect-[4/3] object-cover" [src]="eventData.imageUrl" alt="Imagen del evento">
   
   <div class="p-6" style="background-image: url('/assets/paper.jpg'); background-size: cover; background-position: center;">
-    <p class="font-bold text-xl mb-2 text-gray-900 dark:text-gray-900">{{ eventData.title }}</p>
+    <p class="font-bold text-xl mb-2 text-gray-900 dark:text-gray-900 break-words">{{ eventData.title }}</p>
 
     <div class="flex items-center text-gray-900 dark:text-gray-900 text-sm mb-4">
       <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -17,10 +17,10 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
       </svg>
-      <span>{{ eventData.location }}</span>
+      <span class="min-w-0 break-words">{{ eventData.location }}</span>
     </div>
 
-    <button (click)="showEventDetails()" class="block w-md text-center bg-violet-800 hover:bg-stone-700 text-white dark:text-gray-900 dark:bg-casabgreen dark:hover:bg-casabgreen py-2 px-4 rounded-lg transition-colors duration-300">
+    <button (click)="showEventDetails()" class="block w-full text-center bg-violet-800 hover:bg-stone-700 text-white dark:text-gray-900 dark:bg-casabgreen dark:hover:bg-casabgreen py-2 px-4 rounded-lg transition-colors duration-300">
       Ver Detalles
     </button>
   </div>
