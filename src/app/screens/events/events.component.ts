@@ -17,8 +17,22 @@ export class EventsComponent implements OnInit {
   readonly eventService = inject(EventServiceService);
 
   event: AppEvent[] = [];
+  filteredEvents: AppEvent[] = [];
+  selectedCategory: string = 'Todos';
 
   ngOnInit(): void {
     this.event = this.eventService.getEvents();
+    this.filteredEvents = this.event;
+  }
+
+  filterEvents(category: string): void {
+    this.selectedCategory = category;
+    if (category === 'Todos') {
+      this.filteredEvents = this.event;
+    } else {
+      this.filteredEvents = this.event.filter(
+        event => event.category?.toLowerCase() === category.toLowerCase()
+      );
+    }
   }
 }

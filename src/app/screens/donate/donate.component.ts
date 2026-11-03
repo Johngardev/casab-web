@@ -10,26 +10,32 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./donate.component.css']
 })
 export class DonateComponent {
-  // Propiedad para almacenar el monto de la donación
-  donationAmount: number = 25; // Valor por defecto
+  // Cantidades predefinidas para donar
+  presetAmounts: number[] = [20000, 50000, 100000, 250000];
+  selectedAmount: number = 50000;
+  customAmount: number | null = null;
 
-  constructor() { }
+  // Fondo seleccionado por defecto
+  selectedFund: 'restauracion' | 'reserva' = 'restauracion';
 
-  ngOnInit(): void {
+  // Datos para transferencia directa (Nequi / Daviplata / Bancolombia)
+  bankInfo = {
+    nequi: '300 123 4567',
+    bancolombia: 'Ahorros 123-456789-00',
+    nit: '900.XXX.XXX-X'
+  };
+
+  selectAmount(amount: number): void {
+    this.selectedAmount = amount;
+    this.customAmount = null;
   }
 
-  // Método para asignar un monto predefinido
-  setAmount(amount: number) {
-    this.donationAmount = amount;
+  selectFund(fund: 'restauracion' | 'reserva'): void {
+    this.selectedFund = fund;
   }
 
-  // Método para simular el proceso de donación
-  processDonation() {
-    if (this.donationAmount > 0) {
-      alert(`Gracias por tu donación de $${this.donationAmount}. ¡Tu apoyo es vital para nuestro sueño!`);
-      // Aquí se integraría la lógica real de pago (Stripe, PayPal, etc.)
-    } else {
-      alert('Por favor, ingresa un monto válido.');
-    }
+  processDonation(): void {
+    const finalAmount = this.customAmount ? this.customAmount : this.selectedAmount;
+    alert(`¡Gracias por apoyar a Casa B! Estás a punto de donar $${finalAmount.toLocaleString()} COP al fondo de ${this.selectedFund === 'restauracion' ? 'Restauración' : 'Reserva Natural'}. (Conecta aquí tu pasarela de pagos Wompi/MercadoPago).`);
   }
 }
