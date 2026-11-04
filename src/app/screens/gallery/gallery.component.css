@@ -1,0 +1,8 @@
+/* Animación suave para la línea del tiempo y tarjetas */
+:host {
+  display: block;
+}
+
+.wrap {
+  perspective: 1000px;
+}

@@ -1,1 +1,91 @@
-<p>gallery works!</p>
+<section class="bg-gray-900 text-white font-space-grotesk min-h-screen py-16">
+  <div class="container mx-auto px-4 max-w-6xl">
+    
+    <!-- Encabezado de la Galería -->
+    <div class="text-center mb-16">
+      <span class="text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider bg-casabgreen/20 text-casabgreen mb-3 inline-block">
+        Nuestra Historia
+      </span>
+      <p class="text-4xl md:text-5xl font-extrabold text-white mb-4">
+        Memorias de <span class="text-casabgreen">Casa B</span>
+      </p>
+      <p class="text-gray-400 max-w-2xl mx-auto text-lg font-light text-center">
+        Un recorrido cronológico a través de los momentos, sesiones musicales, exposiciones y encuentros que han construido nuestra comunidad.
+      </p>
+    </div>
+
+    <!-- Contenedor de la Línea del Tiempo -->
+    <div class="relative wrap overflow-hidden p-2 md:p-10">
+      
+      <!-- Línea Vertical Central -->
+      <div class="border-2-2 absolute border-opacity-20 border-casabgreen h-full border left-4 md:left-1/2 -translate-x-1/2"></div>
+
+      <!-- Iteración de Eventos -->
+      @for (memory of memories; track memory.id; let index = $index; let even = $even) {
+        
+        <div 
+          class="mb-12 flex justify-between items-center w-full flex-col md:flex-row {{ even ? 'md:flex-row-reverse' : '' }}">
+          
+          <!-- Espacio vacío en PC para mantener el balance de 50% / 50% -->
+          <div class="order-1 w-full md:w-5/12 hidden md:block"></div>
+
+          <!-- Punto Central / Nodo con Fecha -->
+          <div class="z-20 flex items-center order-1 bg-casabgreen shadow-lg w-8 h-8 rounded-full border-4 border-gray-900 self-start md:self-auto ml-0 md:ml-0">
+            <div class="mx-auto font-semibold text-xs text-black"></div>
+          </div>
+
+          <!-- Tarjeta del Evento (Basada en tu boceto) -->
+          <div 
+            class="order-1 bg-gray-800/80 border border-gray-700/80 rounded-2xl shadow-xl w-full md:w-5/12 px-6 py-5 mt-4 md:mt-0 transition-transform hover:scale-[1.02] hover:border-casabgreen/50">
+            
+            <!-- Etiqueta de Fecha e Identificador -->
+            <div class="flex justify-between items-center mb-3 border-b border-gray-700/60 pb-2">
+              <span class="text-xs font-bold text-casabgreen uppercase tracking-wide">
+                {{ memory.dateStr }}
+              </span>
+              @if (memory.category) {
+                <span class="text-[10px] bg-gray-900 text-gray-300 px-2.5 py-0.5 rounded-full border border-gray-700">
+                  {{ memory.category }}
+                </span>
+              }
+            </div>
+
+            <!-- Título del Evento -->
+            <p class="mb-2 font-bold text-xl text-white pointer-events-none select-none">
+              {{ memory.title }}
+            </p>
+
+            <!-- Artistas / Lineup -->
+            @if (memory.artists && memory.artists.length > 0) {
+              <div class="mb-3">
+                <p class="text-xs text-gray-400 font-semibold mb-1">Lineup / Artistas:</p>
+                <div class="flex flex-wrap gap-1.5">
+                  @for (artist of memory.artists; track artist) {
+                    <span class="text-xs bg-gray-900/80 text-gray-200 px-2 py-0.5 rounded border border-gray-700">
+                      {{ artist }}
+                    </span>
+                  }
+                </div>
+              </div>
+            }
+
+            <!-- Descripción Corta -->
+            <p class="text-sm text-gray-300 leading-relaxed mb-4">
+              {{ memory.description }}
+            </p>
+
+            <!-- Detalle de Fecha Completa -->
+            <div class="text-xs text-gray-400 italic text-right">
+              {{ memory.fullDate }}
+            </div>
+
+          </div>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+</section>
