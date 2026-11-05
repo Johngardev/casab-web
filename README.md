@@ -1,27 +1,85 @@
+<div align="center">
+
 # CasabWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+Aplicación web construida con Angular y TypeScript.
 
-## Development server
+[![Angular](https://img.shields.io/badge/Angular-18.2-DD0031?logo=angular&logoColor=white)](https://angular.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![RxJS](https://img.shields.io/badge/RxJS-7.8-B7178C?logo=reactivex&logoColor=white)](https://rxjs.dev/)
+[![Angular Material](https://img.shields.io/badge/Angular%20Material-18.2-757575?logo=materialdesign&logoColor=white)](https://material.angular.io/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+</div>
 
-## Code scaffolding
+## Acerca del proyecto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+CasabWeb es una aplicación frontend desarrollada con Angular. El proyecto utiliza Angular Material para componentes de interfaz, RxJS para programación reactiva y Tailwind CSS para estilos.
 
-## Build
+## Tecnologías
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- **Angular 18** — framework de la aplicación.
+- **TypeScript 5.5** — lenguaje de desarrollo.
+- **Angular Material y CDK** — componentes y utilidades de interfaz.
+- **RxJS 7.8** — programación reactiva.
+- **Tailwind CSS 3** — utilidades de estilos.
+- **Karma y Jasmine** — ejecución y estructura de pruebas unitarias.
 
-## Running unit tests
+## Requisitos previos
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Node.js y npm instalados.
+- Una versión de Node.js compatible con Angular 18. Consulta la [tabla de compatibilidad de Angular](https://angular.dev/reference/versions).
 
-## Running end-to-end tests
+## Instalación y ejecución
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+# Clonar el repositorio
+git clone https://github.com/Johngardev/casab-web.git
+cd casab-web
 
-## Further help
+# Instalar dependencias
+npm install
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+# Iniciar el servidor de desarrollo
+npm start
+```
+
+La aplicación estará disponible en [http://localhost:4200](http://localhost:4200). El servidor recarga la aplicación cuando detecta cambios en los archivos fuente.
+
+## Comandos disponibles
+
+| Comando | Descripción |
+| --- | --- |
+| `npm start` | Inicia el servidor de desarrollo de Angular. |
+| `npm run build` | Compila la aplicación para producción. Los artefactos se generan en `dist/`. |
+| `npm run watch` | Compila en modo desarrollo y vuelve a compilar al detectar cambios. |
+| `npm test` | Ejecuta las pruebas unitarias con Karma. |
+
+## Estructura principal
+
+- `src/` — código fuente de la aplicación.
+- `public/` — recursos estáticos.
+- `angular.json` — configuración de Angular CLI, compilación y pruebas.
+
+## Desarrollo
+
+Para generar componentes, servicios u otros elementos con Angular CLI:
+
+```bash
+npx ng generate component nombre-del-componente
+npx ng generate service nombre-del-servicio
+```
+
+Para consultar los comandos disponibles:
+
+```bash
+npx ng help
+```
+
+## Contribuciones
+
+Las mejoras y correcciones son bienvenidas. Para contribuir, crea una rama para tus cambios y abre un pull request con una descripción clara de la propuesta.
+
+## Licencia
+
+No se ha especificado una licencia para este repositorio.
