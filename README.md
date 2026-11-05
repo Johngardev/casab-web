@@ -2,7 +2,14 @@
 
 # CasabWeb
 
-Aplicación web construida con Angular y TypeScript.
+<p>
+  <a href="https://casab.netlify.app/" target="_blank">
+    <img src="https://img.shields.io/badge/🌐_Live_Demo-casab.netlify.app-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Live Demo" />
+  </a>
+  <a href="https://www.netlify.com/" target="_blank">
+    <img src="https://img.shields.io/badge/Hosted_on-Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Hosted on Netlify" />
+  </a>
+</p>
 
 [![Angular](https://img.shields.io/badge/Angular-18.2-DD0031?logo=angular&logoColor=white)](https://angular.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
@@ -14,21 +21,28 @@ Aplicación web construida con Angular y TypeScript.
 
 ## Acerca del proyecto
 
-CasabWeb es una aplicación frontend desarrollada con Angular. El proyecto utiliza Angular Material para componentes de interfaz, RxJS para programación reactiva y Tailwind CSS para estilos.
+CasabWeb es una aplicación frontend desarrollada con Angular para ofrecer una experiencia de usuario moderna, rápida y responsiva. El proyecto usa Angular Material para componentes de interfaz, RxJS para programación reactiva y Tailwind CSS para estilos visuales.
+
+## Demo en vivo
+
+La aplicación está desplegada en Netlify y disponible en:
+
+- https://casab.netlify.app/
 
 ## Tecnologías
 
-- **Angular 18** — framework de la aplicación.
-- **TypeScript 5.5** — lenguaje de desarrollo.
-- **Angular Material y CDK** — componentes y utilidades de interfaz.
-- **RxJS 7.8** — programación reactiva.
-- **Tailwind CSS 3** — utilidades de estilos.
-- **Karma y Jasmine** — ejecución y estructura de pruebas unitarias.
+- **Angular 18** — framework principal de la app.
+- **TypeScript 5.5** — lenguaje principal del desarrollo.
+- **Angular Material** — sistema de componentes visuales.
+- **RxJS 7.8** — manejo de flujos reactivos.
+- **Tailwind CSS 3** — utilidades para diseño moderno.
+- **Karma + Jasmine** — pruebas unitarias.
 
 ## Requisitos previos
 
-- Node.js y npm instalados.
-- Una versión de Node.js compatible con Angular 18. Consulta la [tabla de compatibilidad de Angular](https://angular.dev/reference/versions).
+- Node.js instalado.
+- npm o pnpm disponible.
+- Compatible con la versión de Angular 18.
 
 ## Instalación y ejecución
 
@@ -44,33 +58,34 @@ npm install
 npm start
 ```
 
-La aplicación estará disponible en [http://localhost:4200](http://localhost:4200). El servidor recarga la aplicación cuando detecta cambios en los archivos fuente.
+La aplicación estará disponible en [http://localhost:4200](http://localhost:4200).
 
-## Comandos disponibles
+## Scripts disponibles
 
 | Comando | Descripción |
 | --- | --- |
-| `npm start` | Inicia el servidor de desarrollo de Angular. |
-| `npm run build` | Compila la aplicación para producción. Los artefactos se generan en `dist/`. |
-| `npm run watch` | Compila en modo desarrollo y vuelve a compilar al detectar cambios. |
-| `npm test` | Ejecuta las pruebas unitarias con Karma. |
+| `npm start` | Inicia el servidor de desarrollo. |
+| `npm run build` | Genera la versión de producción en `dist/`. |
+| `npm run watch` | Compila en modo desarrollo y observa cambios. |
+| `npm test` | Ejecuta la suite de pruebas unitarias. |
 
 ## Estructura principal
 
 - `src/` — código fuente de la aplicación.
-- `public/` — recursos estáticos.
-- `angular.json` — configuración de Angular CLI, compilación y pruebas.
+- `public/` — archivos estáticos.
+- `angular.json` — configuración del proyecto Angular.
+- `package.json` — dependencias y scripts.
 
 ## Desarrollo
 
-Para generar componentes, servicios u otros elementos con Angular CLI:
+Para generar nuevos componentes o servicios:
 
 ```bash
 npx ng generate component nombre-del-componente
 npx ng generate service nombre-del-servicio
 ```
 
-Para consultar los comandos disponibles:
+Para consultar ayuda de Angular CLI:
 
 ```bash
 npx ng help
@@ -78,8 +93,8 @@ npx ng help
 
 ## Contribuciones
 
-Las mejoras y correcciones son bienvenidas. Para contribuir, crea una rama para tus cambios y abre un pull request con una descripción clara de la propuesta.
+Las contribuciones son bienvenidas. Crea una rama con tus cambios y abre un pull request con una descripción clara.
 
 ## Licencia
 
-No se ha especificado una licencia para este repositorio.
+Aún no se ha definido una licencia para este repositorio.
